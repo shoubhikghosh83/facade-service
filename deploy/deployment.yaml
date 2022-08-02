@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: facade-service
-        image: cloudlifeacr.azurecr.io/k8sflask
+        image: crgshtest.azurecr.io/facade-service
         ports:
         - name:  http
           containerPort: 8080
