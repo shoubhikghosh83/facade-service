@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  facade-service
+spec:
+  selector:
+    app:  facade-service
+  type:  ClusterIP
+  ports:
+  - name:  http
+    port:  80
+    targetPort: 8080
