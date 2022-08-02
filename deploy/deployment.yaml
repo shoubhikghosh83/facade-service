@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: facade-service
+  labels:
+    app: facade-service
+    env: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: facade-service
+  template:
+    metadata:
+      labels:
+        app: facade-service
+        env: dev
+    spec:
+      containers:
+      - name: facade-service
+        image: cloudlifeacr.azurecr.io/k8sflask
+        ports:
+        - name:  http
+          containerPort: 8080
+          protocol: TCP
