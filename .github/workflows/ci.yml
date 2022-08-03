@@ -28,9 +28,11 @@ jobs:
           java-version: 11
       - name: Build project with Maven
         run: mvn -B package --file pom.xml
-      #- uses: Azure/docker-login@v1
-        #with:
-          #login-server: crgshtest.azurecr.io
+      - uses: Azure/docker-login@v1
+        with:
+          login-server: crgshtest.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
       - run: |
           docker build . -t crgshtest.azurecr.io/facade-service:1.0
           docker push crgshtest.azurecr.io/facade-service:1.0
