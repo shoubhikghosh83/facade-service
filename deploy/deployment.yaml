@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: facade-service
-        image: crgshtest.azurecr.io/facade-service
+        image: crgshtest.azurecr.io/facade-service:1.0
         ports:
         - name:  http
           containerPort: 8080
