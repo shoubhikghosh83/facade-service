@@ -36,3 +36,23 @@ jobs:
       - run: |
           docker build . -t crgshtest.azurecr.io/facade-service:1.0
           docker push crgshtest.azurecr.io/facade-service:1.0
+      - uses: Azure/aks-set-context@v1
+        with:
+          cluster-name: aksshtest
+          resource-group: rg-sh-test
+      - uses: Azure/k8s-create-secret@v1
+        with:
+          container-registry-url: cloudlifeacr.azurecr.io
+          container-registry-username: ${{ secrets.ACR_USERNAME }}
+          container-registry-password: ${{ secrets.ACR_PASSWORD }}
+          secret-name: k8s-secret
+      - uses: Azure/k8s-deploy@v1
+        with:
+          manifests: |
+            deploy/deployment.yaml
+            deploy/service.yaml
+            deploy/ingress.yaml
+          images: |
+            crgshtest.azurecr.io/facade-service:1.0
+          imagepullsecrets: |
+            k8s-secret
