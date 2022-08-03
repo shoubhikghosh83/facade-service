@@ -34,8 +34,8 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
       - run: |
-          docker build . -t crgshtest.azurecr.io/facade-service:1.0
-          docker push crgshtest.azurecr.io/facade-service:1.0
+          docker build . -t crgshtest.azurecr.io/facade-service:latest
+          docker push crgshtest.azurecr.io/facade-service:latest
       #- uses: azure/login@v1
         #with:
           #client-id: ${{ secrets.AZURE_CLIENT_ID }}
@@ -59,6 +59,6 @@ jobs:
             deploy/service.yaml
             deploy/ingress.yaml
           images: |
-            crgshtest.azurecr.io/facade-service:1.0
+            crgshtest.azurecr.io/facade-service:latest
           imagepullsecrets: |
             k8s-secret
