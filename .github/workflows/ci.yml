@@ -36,6 +36,11 @@ jobs:
       - run: |
           docker build . -t crgshtest.azurecr.io/facade-service:1.0
           docker push crgshtest.azurecr.io/facade-service:1.0
+      - uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - uses: Azure/aks-set-context@v1
         with:
           cluster-name: aksshtest
