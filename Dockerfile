@@ -1,8 +1,6 @@
 FROM openjdk:11-slim
 EXPOSE 8080
-
+RUN mkdir -p /usr/shoubhik
 RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
-
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+COPY ./target/api-0.0.1-SNAPSHOT.jar /usr/shoubhik
+ENTRYPOINT ["java","-jar","api-0.0.1-SNAPSHOT.jar"]
