@@ -26,5 +26,5 @@ steps:
     echo Login to docker repository
     docker login -u acrshtest -p cBuWRL+Xd9+kI1+PGNRGnFJQpCDVelCd acrshtest.azurecr.io
     echo Push docker image
-    docker push acrshtest.azurecr.io/facade-service:latest
+    docker push acrshtest.azurecr.io/facade-service:$(Build.BuildNumber)
   displayName: 'Build and Push Docker Image'
