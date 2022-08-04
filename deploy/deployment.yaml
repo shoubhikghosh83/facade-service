@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: facade-service
-        image: acrshtest.azurecr.io/facade-service:20220804.10
+        image: acrshtest.azurecr.io/facade-service:20220804.12
         imagePullPolicy: Always
         ports:
         - name:  http
