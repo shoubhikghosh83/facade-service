@@ -4,13 +4,13 @@ metadata:
   name: facade-service
   annotations:
    kubernetes.io/ingress.class: addon-http-application-routing
-   #nginx.ingress.kubernetes.io/rewrite-target: /
+   nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
   - host: faced-service.8fefeba7fb624e1faca6.centralindia.aksapp.io
     http:
       paths:
-        - path: /
+        - path: /(.*)
           pathType: Prefix
           backend:
             service:
