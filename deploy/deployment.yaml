@@ -24,5 +24,5 @@ spec:
         - name:  http
           containerPort: 8080
           protocol: TCP
-        imagePullSecrets:
-        - name: acr-connection
+        #imagePullSecrets:
+        #- name: acr-connection
